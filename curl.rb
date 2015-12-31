@@ -1,6 +1,5 @@
 require 'active_support/core_ext/hash'
 require 'json'
-require 'pry-rails'
 
 class Curl
   attr_accessor :path, :data, :type
