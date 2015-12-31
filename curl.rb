@@ -30,8 +30,8 @@ class Generator
   def initialize(curl)
     @curl           = curl
     @cmd            = "curl -i -X"
-    @user           = "-u user:userpass"  # Auth data
-    @domain         = "http://onapp.test" # Modify in need it!
+    @user           = "-u user:userpass"   # Auth data
+    @domain         = "http://domain.test" # Modify in need it!
     @request        = curl.type.upcase
   end
 
