@@ -23,8 +23,7 @@ end
 # -----------------------------------------------------------------------------
 
 class Generator
-  attr_accessor :curl, :cmd, :request, :user, :domain, :headers, :path,
-                :formatted_data, :data, :format
+  attr_accessor :curl, :cmd, :request, :user, :domain, :data, :format
 
   def initialize(curl)
     @curl    = curl
@@ -34,15 +33,29 @@ class Generator
     @request = curl.type.upcase
   end
 
-  def generate_headers
+  def generate
+    %w(json xml).each do |f|
+      @format = f
+
+      # Output
+      puts "\n#{@format.upcase}:\n"
+      result = "#{cmd} #{request} #{user} #{gen_headers} #{gen_path} #{gen_data}"
+      puts "#{result}\n"
+    end
+  end
+
+  private
+
+  # gen = generate
+  def gen_headers
     "-H 'Accept: application/#{format}' -H 'Content-Type: application/#{format}'"
   end
 
-  def generate_path
+  def gen_path
     "#{domain}#{curl.path}.#{format}"
   end
 
-  def generate_data
+  def gen_data
     curl.data == '' ?  nil : "-d '#{format_data}'"
   end
 
@@ -54,17 +67,6 @@ class Generator
       hash.to_xml(skip_instruct: true, skip_types: true).delete("\n ").gsub("<hash>","").gsub("</hash>","")
     else
       curl.data
-    end
-  end
-
-  def generate
-    %w(json xml).each do |f|
-      @format = f
-
-      # Output
-      puts "\n#{@format.upcase}:\n"
-      result = "#{cmd} #{request} #{user} #{generate_headers} #{generate_path} #{generate_data}"
-      puts "#{result}\n"
     end
   end
 end
@@ -94,6 +96,8 @@ class Run
       system(result)
       puts "\n\n"
     end
+
+    private
 
     def test?
       test == 'y'

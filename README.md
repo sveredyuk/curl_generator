@@ -29,6 +29,18 @@ Process founded on some few simple questions:
 
 Generator build for you two curl request: json & xml format. Yeahhh...!
 
+    CURL Generator v0.2 beta
+    Type of request: get
+    Path: /index
+    Data: { "type" : "best" }
+    Test request (y/n): n
+
+    JSON:
+    curl -i -X GET -u user:userpass -H 'Accept: application/json' -H 'Content-Type: application/json' http://domain.test/index.json -d '{ "type" : "best" }'
+
+    XML:
+    curl -i -X GET -u user:userpass -H 'Accept: application/xml' -H 'Content-Type: application/xml' http://domain.test/index.xml -d '<type>best</type>'
+
 ## Contributing
 
 Welcomed!
