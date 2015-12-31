@@ -2,7 +2,7 @@
 
 ## What is this ?
 
-This is tool for generating and testing curl request for API. 
+This is tool for generating and testing curl request for API.
 If for some reason tech writers always blame you about request to build correct curl for them,
 you easy could use this tool.
 
@@ -26,6 +26,8 @@ Process founded on some few simple questions:
 3. Data: Please input request data in JSON format or just skip (press Enter) for empty data.
 
 4. Test request (y/n): Input y and press Enter for execute this curl after generating of input something else and press enter for non-test mode.
+
+Generator build for you two curl request: json & xml format. Yeahhh...!
 
 ## Contributing
 
